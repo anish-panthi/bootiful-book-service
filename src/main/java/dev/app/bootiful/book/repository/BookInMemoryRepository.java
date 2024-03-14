@@ -15,16 +15,16 @@ public class BookInMemoryRepository {
 
   @PostConstruct
   private void init() {
-    books.add(new Book(1, "Java", "James Gosling", "Java Programming", "1995-05-23"));
-    books.add(new Book(2, "Python", "Guido van Rossum", "Python Programming", "2005-02-20"));
-    books.add(new Book(3, "C++", "Bjarne Stroustrup", "C++ Programming", "2000-10-14"));
+    books.add(new Book(1L, "Java", "James Gosling", "Java Programming", "1995-05-23"));
+    books.add(new Book(2L, "Python", "Guido van Rossum", "Python Programming", "2005-02-20"));
+    books.add(new Book(3L, "C++", "Bjarne Stroustrup", "C++ Programming", "2000-10-14"));
   }
 
   public List<Book> findAll() {
     return books;
   }
 
-  public Optional<Book> findById(Integer id) {
+  public Optional<Book> findById(Long id) {
     return books.stream().filter(b -> b.id().equals(id)).findFirst();
   }
 

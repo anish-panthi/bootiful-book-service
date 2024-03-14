@@ -3,3 +3,11 @@ services:
     image: 'openzipkin/zipkin:latest'
     ports:
       - '9411:9411'
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"

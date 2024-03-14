@@ -2,6 +2,7 @@ package dev.app.bootiful.book.controller;
 
 import dev.app.bootiful.book.dto.Book;
 import dev.app.bootiful.book.repository.BookInMemoryRepository;
+import dev.app.bootiful.book.repository.BookRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.List;
 @RestController
 public class BookController {
 
-    private final BookInMemoryRepository bookRepository;
+    private final BookRepository bookRepository;
 
-    public BookController(BookInMemoryRepository bookRepository) {
+    public BookController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
@@ -20,23 +21,23 @@ public class BookController {
         return bookRepository.findAll();
     }
 
-    @GetMapping("/api/books/{id}")
-    public Book getBookById(Integer id) {
-        return bookRepository.findById(id).orElse(null);
-    }
-
-    @PostMapping("/api/books")
-    public void saveBook(@RequestBody Book book) {
-        bookRepository.save(book);
-    }
-
-    @PutMapping("/api/books/{id}")
-    public void updateBook(@RequestBody Book book, @PathVariable Integer id) {
-        bookRepository.save(book);
-    }
-
-    @DeleteMapping("/api/books/{id}")
-    public void deleteBook(@PathVariable Integer id) {
-        bookRepository.findById(id).ifPresent(bookRepository::delete);
-    }
+//    @GetMapping("/api/books/{id}")
+//    public Book getBookById(@PathVariable("id") Long id) {
+//        return bookRepository.findById(id).orElse(null);
+//    }
+//
+//    @PostMapping("/api/books")
+//    public void saveBook(@RequestBody Book book) {
+//        bookRepository.save(book);
+//    }
+//
+//    @PutMapping("/api/books/{id}")
+//    public void updateBook(@RequestBody Book book, @PathVariable Integer id) {
+//        bookRepository.save(book);
+//    }
+//
+//    @DeleteMapping("/api/books/{id}")
+//    public void deleteBook(@PathVariable Long id) {
+//        bookRepository.findById(id).ifPresent(bookRepository::delete);
+//    }
 }
